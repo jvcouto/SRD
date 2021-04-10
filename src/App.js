@@ -4,7 +4,7 @@ import Login from './pages/login'
 import Dashboard from './pages/dashboard'
 
 
-let  isLogged = false
+let  isLogged = true
 
 function App() {
   return (

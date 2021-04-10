@@ -1,9 +1,10 @@
 import React from 'react';
 
+import AppBar from '../../components/appBar/index'
 
 const Dashboard = () => {
     return (
-    <h1>dashboard</h1>
+    <AppBar/>
     )
 }
 
