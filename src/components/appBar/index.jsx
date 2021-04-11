@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import SimpleAccordion from '../../pages/dashboard/listexpands';
+import { useAuth } from '../../services/authContext';
 
 function TabPanel(props) {
   const {
