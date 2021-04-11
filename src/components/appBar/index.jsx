@@ -1,3 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,6 +23,7 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
+      s
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
