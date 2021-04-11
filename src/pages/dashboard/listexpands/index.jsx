@@ -48,15 +48,6 @@ export default function SimpleAccordion() {
           <ListItemSecondaryAction>
             <IconButton
               edge="end"
-              aria-label="expand"
-              onClick={() => {
-                alert('✔️ Expandir!');
-              }}
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-            <IconButton
-              edge="end"
               aria-label="edit"
               onClick={() => {
                 alert('✔️ Editar!');
