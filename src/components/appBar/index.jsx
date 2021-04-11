@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import InteractiveList from '../../pages/dashboard/list';
+import { useAuth } from '../../services/authContext';
 
 function TabPanel(props) {
   const {
@@ -57,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   tabs: {
+    padding: theme.spacing(2),
     flexGrow: 2,
   },
 }));
@@ -64,9 +66,14 @@ const useStyles = makeStyles((theme) => ({
 export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { setIsLogged } = useAuth();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleClick = () => {
+    setIsLogged(false);
   };
 
   return (
@@ -77,11 +84,10 @@ export default function SimpleTabs() {
             SRD
           </Typography>
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" className={classes.tabs}>
-            <Tab label="Item One" {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab label="Listar Professor" {...a11yProps(0)} />
+            <Tab label="Adicionar" {...a11yProps(1)} />
           </Tabs>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" onClick={handleClick}>Logout</Button>
         </Toolbar>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -89,9 +95,6 @@ export default function SimpleTabs() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
       </TabPanel>
     </div>
   );
