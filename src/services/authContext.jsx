@@ -1,9 +1,10 @@
 import React, { createContext, useState } from 'react';
 
-const AuthContext = createContext({ signed: true });
+const AuthContext = createContext();
 
-export const AuthProvider = (children) => {
-  const [isLogged, setIsLogged] = useState();
+// eslint-disable-next-line react/prop-types
+export const AuthProvider = ({ children }) => {
+  const [isLogged, setIsLogged] = useState(false);
   return (
     <AuthContext.Provider value={{ isLogged, setIsLogged }}>
       {children}

@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/login';
 import Dashboard from './pages/dashboard';
-// import AuthContext from './services/authContext';
+import AuthContext from './services/authContext';
 
-const routes = () => {
-//   const { isLogged } = useContext(AuthContext);
-  const isLogged = true;
+const Routes = () => {
+  const { isLogged } = useContext(AuthContext);
+
+  useEffect(() => {
+
+  }, isLogged);
+
   return (
     <Switch>
       <Route exact path="/">
@@ -18,4 +22,4 @@ const routes = () => {
     </Switch>
   );
 };
-export default routes;
+export default Routes;
