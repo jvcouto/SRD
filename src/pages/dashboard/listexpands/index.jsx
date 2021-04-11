@@ -8,7 +8,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { IconButton, ListItemSecondaryAction } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import dbManager from '../../../utils/dbManager';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,28 +19,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleAccordion() {
+export default function SimpleAccordion(props) {
+  const { professors, setProfessors } = props;
   const classes = useStyles();
-  const data = dbManager.getTeacherList(0);
+
+  const handleDeleteButton = (selectedProfessor) => {
+    const newProfessors = professors;
+    setProfessors(newProfessors.filter((professor) => professor.nome !== selectedProfessor.nome));
+  };
+
   const resp = (
     <div className={classes.root}>
-      {data.map((c) => (
+      {professors.map((professor) => (
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
+            id={professor}
           >
             <Typography className={classes.heading}>
-              {' '}
-              {c.name}
+              {`${professor.nome} ${professor.sobrenome}`}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              {`Titualção: ${c.titration}`}
+              {`Titualção: ${professor.titulacao}`}
               <br />
-              {`Cpf: ${c.cpf}`}
+              {`Cpf: ${professor.cpf}`}
+              <br />
+              {`Email: ${professor.email}`}
+              <br />
+              {`Data De Nascimento: ${professor.dataDeNascimento}`}
+              <br />
+              {`Ano admissao: ${professor.anoAdmissao}`}
             </Typography>
           </AccordionDetails>
 
@@ -59,7 +69,7 @@ export default function SimpleAccordion() {
               edge="end"
               aria-label="delete"
               onClick={() => {
-                alert('✔️ Deletar!');
+                handleDeleteButton(professor);
               }}
             >
               <DeleteIcon />

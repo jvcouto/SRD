@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import SimpleAccordion from '../../pages/dashboard/listexpands';
+import ProfessorForm from '../../pages/dashboard/professorForm';
 import { useAuth } from '../../services/authContext';
 
 function TabPanel(props) {
@@ -63,7 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
+  // eslint-disable-next-line react/prop-types
+  const { professors, setProfessors } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const { setIsLogged } = useAuth();
@@ -91,10 +94,10 @@ export default function SimpleTabs() {
         </Toolbar>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SimpleAccordion />
+        <SimpleAccordion professors={professors} setProfessors={setProfessors} />
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
+      <TabPanel value={value} index={1} professors={professors} setProfessors={setProfessors}>
+        <ProfessorForm professors={professors} setProfessors={setProfessors} />
       </TabPanel>
     </div>
   );

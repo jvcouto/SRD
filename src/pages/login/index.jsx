@@ -51,8 +51,8 @@ export default function ValidationTextFields() {
   const { setIsLogged } = useAuth();
 
   const handleClick = () => {
-    if (username === '12345') {
-      if (password === 'testeteste') {
+    if (username === '123') {
+      if (password === '123') {
         setIsLogged(true);
       } else {
         setPassword('');
