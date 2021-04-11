@@ -13,8 +13,12 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
+<<<<<<< HEAD
 import InteractiveList from '../../pages/dashboard/list';
 import { useAuth } from '../../services/authContext';
+=======
+import SimpleAccordion from '../../pages/dashboard/listexpands';
+>>>>>>> 61c448d6eab380b35e84febf3aaedf2234deb7a1
 
 function TabPanel(props) {
   const {
@@ -91,7 +95,7 @@ export default function SimpleTabs() {
         </Toolbar>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <InteractiveList />
+        <SimpleAccordion />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
