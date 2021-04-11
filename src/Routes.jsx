@@ -1,15 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/login';
 import Dashboard from './pages/dashboard';
-import AuthContext from './services/authContext';
+import { useAuth } from './services/authContext';
 
 const Routes = () => {
-  const { isLogged } = useContext(AuthContext);
-
-  useEffect(() => {
-
-  }, isLogged);
+  const { isLogged } = useAuth();
 
   return (
     <Switch>
