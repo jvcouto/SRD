@@ -92,9 +92,9 @@ export default function SimpleTabs(props) {
           </Typography>
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" className={classes.tabs}>
             <Tab label="Listar Professor" {...a11yProps(0)} />
-            <Tab label="Adicionar" {...a11yProps(1)} />
+            <Tab label="Adicionar Professor" {...a11yProps(1)} />
             <Tab label="Listar Técnicos" {...a11yProps(2)} />
-            <Tab label="Adicionar" {...a11yProps(3)} />
+            <Tab label="Adicionar Técnico" {...a11yProps(3)} />
           </Tabs>
           <Button color="inherit" onClick={handleClick}>Logout</Button>
         </Toolbar>
