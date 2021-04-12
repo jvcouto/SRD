@@ -13,9 +13,11 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
-import SimpleAccordion from '../../pages/dashboard/listexpands';
 import ProfessorForm from '../../pages/dashboard/professorForm';
 import { useAuth } from '../../services/authContext';
+import ProfessorList from '../../pages/dashboard/professorList';
+import TecnicoList from '../../pages/dashboard/tecnicoList';
+import TecnicoForm from '../../pages/dashboard/tecnicoForm';
 
 function TabPanel(props) {
   const {
@@ -67,10 +69,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SimpleTabs(props) {
   // eslint-disable-next-line react/prop-types
   const { professors, setProfessors } = props;
+
+  // eslint-disable-next-line react/prop-types
+  const { tecnicos, setTecnicos } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const { setIsLogged } = useAuth();
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -89,15 +93,23 @@ export default function SimpleTabs(props) {
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" className={classes.tabs}>
             <Tab label="Listar Professor" {...a11yProps(0)} />
             <Tab label="Adicionar" {...a11yProps(1)} />
+            <Tab label="Listar Técnicos" {...a11yProps(2)} />
+            <Tab label="Adicionar" {...a11yProps(3)} />
           </Tabs>
           <Button color="inherit" onClick={handleClick}>Logout</Button>
         </Toolbar>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SimpleAccordion professors={professors} setProfessors={setProfessors} />
+        <ProfessorList professors={professors} setProfessors={setProfessors} />
       </TabPanel>
       <TabPanel value={value} index={1} professors={professors} setProfessors={setProfessors}>
         <ProfessorForm professors={professors} setProfessors={setProfessors} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <TecnicoList tecnicos={tecnicos} setTecnicos={setTecnicos} />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <TecnicoForm tecnicos={tecnicos} setTecnicos={setTecnicos} />
       </TabPanel>
     </div>
   );

@@ -6,6 +6,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
 import LogoPng from '../../assets/user.svg';
 import { useAuth } from '../../services/authContext';
+import Administrador from '../../utils/fakeAdm';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -51,6 +52,17 @@ export default function ValidationTextFields() {
   const { setIsLogged } = useAuth();
 
   const handleClick = () => {
+    const data = Administrador.filter(
+      (c) => (c.username === username) && (c.password === password),
+    );
+    if (data.length > 0) {
+      setIsLogged(true);
+    } else {
+      setUsername('');
+      setPassword('');
+      setError(true);
+    }
+    /*
     if (username === '123') {
       if (password === '123') {
         setIsLogged(true);
@@ -64,6 +76,7 @@ export default function ValidationTextFields() {
       setPassword('');
       setError(true);
     }
+    */
   };
 
   const handleUsernameChange = (event) => setUsername(event.target.value);

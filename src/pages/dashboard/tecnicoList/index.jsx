@@ -19,39 +19,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleAccordion(props) {
-  const { professors, setProfessors } = props;
+export default function TecnicoList(props) {
+  const { tecnicos, setTecnicos } = props;
   const classes = useStyles();
-
-  const handleDeleteButton = (selectedProfessor) => {
-    const newProfessors = professors;
-    setProfessors(newProfessors.filter((professor) => professor.nome !== selectedProfessor.nome));
+  console.log(props);
+  console.log('tecnicos', tecnicos);
+  const handleDeleteButton = (selectedTecnico) => {
+    console.log('Selected Tecnico: ', selectedTecnico);
+    const newTecnicos = tecnicos;
+    setTecnicos(newTecnicos.filter((tecnico) => tecnico.nome !== selectedTecnico.nome));
   };
 
   const resp = (
     <div className={classes.root}>
-      {professors.map((professor) => (
+      {tecnicos.map((tecnico) => (
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id={professor}
+            id={tecnico}
           >
             <Typography className={classes.heading}>
-              {`${professor.nome} ${professor.sobrenome}`}
+              {`${tecnico.nome} ${tecnico.sobrenome}`}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              {`Titualção: ${professor.titulacao}`}
+              {`Cargo: ${tecnico.cargo}`}
               <br />
-              {`Cpf: ${professor.cpf}`}
+              {`Curso: ${tecnico.curso}`}
               <br />
-              {`Email: ${professor.email}`}
+              {`Cpf: ${tecnico.cpf}`}
               <br />
-              {`Data De Nascimento: ${professor.dataDeNascimento}`}
+              {`Email: ${tecnico.email}`}
               <br />
-              {`Ano admissao: ${professor.anoAdmissao}`}
+              {`Data De Nascimento: ${tecnico.dataDeNascimento}`}
+              <br />
+              {`Ano admissao: ${tecnico.anoAdmissao}`}
             </Typography>
           </AccordionDetails>
 
@@ -60,7 +64,7 @@ export default function SimpleAccordion(props) {
               edge="end"
               aria-label="edit"
               onClick={() => {
-                alert('✔️ Editar!');
+                alert('asijasj');
               }}
             >
               <EditIcon />
@@ -69,7 +73,7 @@ export default function SimpleAccordion(props) {
               edge="end"
               aria-label="delete"
               onClick={() => {
-                handleDeleteButton(professor);
+                handleDeleteButton(tecnico);
               }}
             >
               <DeleteIcon />
