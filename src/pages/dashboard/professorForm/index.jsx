@@ -71,13 +71,13 @@ export default function ProfessorForm(props) {
     <form className={classes.form} noValidate autoComplete="off">
       <div className={classes.div}>
         <Typography variant="h4">Formulario</Typography>
-        <TextField id="Cpf" required label="Cpf" onChange={handleCpfChange} className={classes.textfield} />
-        <TextField id="Nome" required label="Nome" onChange={handleNomeChange} className={classes.textfield} />
+        <TextField id="Cpf" required label="Cpf" value={cpf} onChange={handleCpfChange} className={classes.textfield} />
+        <TextField id="Nome" required label="Nome" value={nome} onChange={handleNomeChange} className={classes.textfield} />
         <TextField id="Sobrenome" value={sobrenome} required label="Sobrenome" onChange={handleSobrenomeChange} className={classes.textfield} />
-        <TextField id="Email" required label="Email" onChange={handleEmailChange} className={classes.textfield} />
-        <TextField id="Titulacao" required label="Titulação" onChange={handleTitulaçãoChange} className={classes.textfield} />
-        <TextField id="Data de nascimento" required label="Data de nascimento" onChange={handleDataDeNascimentoChange} className={classes.textfield} />
-        <TextField id="Ano admissao" required label="Ano admissão" onChange={handleAnoAdmissaoChange} className={classes.textfield} />
+        <TextField id="Email" required label="Email" value={email} onChange={handleEmailChange} className={classes.textfield} />
+        <TextField id="Titulacao" required label="Titulação" value={titulacao} onChange={handleTitulaçãoChange} className={classes.textfield} />
+        <TextField id="Data de nascimento" required label="Data de nascimento" value={dataDeNascimento} onChange={handleDataDeNascimentoChange} className={classes.textfield} />
+        <TextField id="Ano admissao" required label="Ano admissão" value={anoAdmissao} onChange={handleAnoAdmissaoChange} className={classes.textfield} />
         <Button variant="contained" color="primary" className={classes.button} onClick={handleClick}>
           Confirmar
         </Button>
